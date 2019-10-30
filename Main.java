@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -72,6 +73,17 @@ public class Main {
         return -1;
     }
 
+    private static int hastableSearch(List<String> requests,
+                                      Hashtable<String, String> table) {
+        int count = 0;
+        for (String request : requests) {
+            if (table.get(request) != null) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     private static int jumpSearch(String[] array, String target) {
         int currentRight = 0;
         int prevRight = 0;
@@ -114,6 +126,8 @@ public class Main {
         millis -= TimeUnit.SECONDS.toMillis(seconds);
         return new long[]{minutes, seconds, millis};
     }
+
+
 
     public static List<String> performBubbleSort(long limit, List<String> names) {
         String temp;
@@ -237,9 +251,29 @@ public class Main {
                 totalTime[0], totalTime[1], totalTime[2]);
         System.out.printf("Sorting time: %s min. %s sec. %s ms.\n",
                 sort[0], sort[1], sort[2]);
-        System.out.printf("Searching time: %s min. %s sec. %s ms.",
+        System.out.printf("Searching time: %s min. %s sec. %s ms.\n\n",
                 search[0], search[1], search[2]);
 
+
+        System.out.println("Start searching (hash table)...");
+        start = System.currentTimeMillis();
+        Hashtable<String, String> table = new Hashtable<>();
+        for(int i= 0; i < names.size(); i++){
+            table.put(names.get(i), numbers.get(i));
+        }
+        sortingTime = System.currentTimeMillis() - start;
+        sort = convertMillis(sortingTime);
+        start = System.currentTimeMillis();
+        found = hastableSearch(requests, table);
+        searchingTime = System.currentTimeMillis() - start;
+        totalTime = convertMillis(sortingTime + searchingTime);
+        System.out.printf("Found %s / %s entries. Time taken: %s min. %s sec. %s ms.\n",
+                found, requests.size(),
+                totalTime[0], totalTime[1], totalTime[2]);
+        System.out.printf("Sorting time: %s min. %s sec. %s ms.\n",
+                sort[0], sort[1], sort[2]);
+        System.out.printf("Searching time: %s min. %s sec. %s ms.\n\n",
+                search[0], search[1], search[2]);
     }
 
 }
