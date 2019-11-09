@@ -1,7 +1,7 @@
 package phonebook;
 
-public class MessageBuilder {
-    int requests;
+class MessageBuilder {
+    private int requests;
 
     MessageBuilder(int requests) {
         this.requests = requests;
