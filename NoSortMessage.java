@@ -1,9 +1,9 @@
 package phonebook;
 
 public class NoSortMessage implements Message {
-    long[] searchTime;
-    int found;
-    int size;
+    private long[] searchTime;
+    private int found;
+    private int size;
 
     NoSortMessage(int size) {
         this.size = size;
