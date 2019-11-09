@@ -12,7 +12,7 @@ public class JumpSearch implements SearchingAlgorithm {
         this.list = list;
 
         String temp;
-        Long start = System.currentTimeMillis();
+        long start = System.currentTimeMillis();
 
         bubbleSort:
         for (int j = 0; j < list.size(); j++) {
@@ -73,7 +73,7 @@ public class JumpSearch implements SearchingAlgorithm {
 
     @Override
     public int findInArray(List<String> requests) {
-        String[] arr = list.stream().toArray(String[]::new);
+        String[] arr = list.toArray(new String[0]);
         int found = 0;
         for (String request : requests) {
             if (jumpSearch(arr, request) > -1) {
@@ -83,11 +83,11 @@ public class JumpSearch implements SearchingAlgorithm {
         return found;
     }
 
-    public void setLimit(long limit) {
+    void setLimit(long limit) {
         this.limit = limit;
     }
 
-    public boolean getFinish() {
+    boolean getFinish() {
         return isFinished;
     }
 }
