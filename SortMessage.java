@@ -17,7 +17,7 @@ public class SortMessage implements Message {
         System.out.printf("Found %s / %s entries. Time taken: %s min. %s sec. %s ms.\n",
                 found, size,
                 totalTime[0], totalTime[1], totalTime[2]);
-        if (differ == 2) {
+        if (differ == 0) {
             System.out.printf("Sorting time: %s min. %s sec. %s ms.\n",
                     sortTime[0], sortTime[1], sortTime[2]);
         } else if (differ == 1) {
