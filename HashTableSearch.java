@@ -25,7 +25,7 @@ public class HashTableSearch implements SearchingAlgorithm {
         return found;
     }
 
-    public void setNumbers(List<String> numbers) {
+    void setNumbers(List<String> numbers) {
         this.numbers = numbers;
     }
 }
